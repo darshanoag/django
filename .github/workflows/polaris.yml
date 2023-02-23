@@ -1,0 +1,27 @@
+# Polaris on a GitHub-hosted ephemeral runner
+name: polaris
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  polaris:
+    runs-on: macos-latest
+
+    env:
+      POLARIS_SERVER_URL: ${{ https://sipse.polaris.synopsys.com/ }}
+      POLARIS_ACCESS_TOKEN: ${{ gia7ldqdf52fv2lcakp9kc5k4c5nnlkq56df7dfa0ojf355o3rgg }}
+      PROJECT: havnoor-igoat-swift
+      BLDCMD: xcodebuild -UseModernBuildSystem=NO -workspace iGoat-Swift/iGoat-Swift.xcodeproj/project.xcworkspace -scheme iGoat-Swift build CODE_SIGNING_ALLOWED=NO
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Polaris Scan
+      run: |
+        PLATFORM=macosx
+        curl -fLOsS $POLARIS_SERVER_URL/api/tools/polaris_cli-$PLATFORM.zip
+        unzip -d $RUNNER_TEMP -jo polaris_cli-$PLATFORM.zip
+        $RUNNER_TEMP/polaris capture -- $BLDCMD
+        $RUNNER_TEMP/polaris --co project.name=$PROJECT --co capture.coverity.autoCapture="enable" analyze -w
