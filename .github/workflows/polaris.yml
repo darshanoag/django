@@ -11,8 +11,8 @@ jobs:
     runs-on: macos-latest
 
     env:
-      POLARIS_SERVER_URL: ${{ "https://sipse.polaris.synopsys.com/" }}
-      POLARIS_ACCESS_TOKEN: ${{ "gia7ldqdf52fv2lcakp9kc5k4c5nnlkq56df7dfa0ojf355o3rgg" }}
+      POLARIS_SERVER_URL: "https://sipse.polaris.synopsys.com/"
+      POLARIS_ACCESS_TOKEN: "gia7ldqdf52fv2lcakp9kc5k4c5nnlkq56df7dfa0ojf355o3rgg"
       PROJECT: havnoor-igoat-swift
       BLDCMD: xcodebuild -UseModernBuildSystem=NO -workspace iGoat-Swift/iGoat-Swift.xcodeproj/project.xcworkspace -scheme iGoat-Swift build CODE_SIGNING_ALLOWED=NO
 
