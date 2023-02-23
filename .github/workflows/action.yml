@@ -5,10 +5,10 @@ branding:
   icon: shield
   color: blue
 inputs:
-  polaris_url: "https://sipse.polaris.synopsys.com/"
+  polaris_url: https://sipse.polaris.synopsys.com/
     description: URL for Polaris where the thin client can be downloaded
     reqred: true
-  polaris_token: "gia7ldqdf52fv2lcakp9kc5k4c5nnlkq56df7dfa0ojf355o3rgg"
+  polaris_token: gia7ldqdf52fv2lcakp9kc5k4c5nnlkq56df7dfa0ojf355o3rgg
     description: Polaris Access Token
     required: true
   polaris_install_folder:
