@@ -27,6 +27,7 @@ from .models import Article, Car, Count, Event, EventGuide, Location, Site, Vehi
 class NestedObjectsTests(TestCase):
     """
     Tests for ``NestedObject`` utility collection.
+    Added for testing 
     """
 
     @classmethod
