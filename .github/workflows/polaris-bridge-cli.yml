@@ -22,6 +22,8 @@ jobs:
       BRIDGE_GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PR_NUMBER: ${{ github.event.number }}
     steps:
+    - name: Checkout Source
+      uses: actions/checkout@v4
     #- name: Polaris Full Scan
     # if: ${{ github.event_name != 'pull_request' }}
     # run: |
@@ -40,7 +42,7 @@ jobs:
         ${{ runner.temp }}/synopsys-bridge --stage polaris \
             polaris.prcomment.enabled='true' \
             polaris.serverUrl='https://poc.polaris.synopsys.com/' \
-            polaris.branch.parent.name=${{ github.event.base_ref }} \
+            polaris.branch.parent.name='main' \
             github.repository.owner.name=${{ github.repository_owner }} \
             github.repository.name=${{ github.event.repository.name }} \
             github.repository.branch.name=${{ github.ref_name }} \
