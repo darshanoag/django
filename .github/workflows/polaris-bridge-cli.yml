@@ -38,6 +38,7 @@ jobs:
         curl -fLsS -o bridge.zip https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-bridge/latest/synopsys-bridge-linux64.zip && unzip -qo -d ${{ runner.temp }} bridge.zip && rm -f bridge.zip
         ${{ runner.temp }}/synopsys-bridge --stage polaris \
             polaris.prcomment.enabled='true' \
+            polaris.serverUrl='https://poc.polaris.synopsys.com/' \
             polaris.branch.parent.name=${{ github.event.base_ref }} \
             github.repository.owner.name=${{ github.repository_owner }} \
             github.repository.name=${{ github.event.repository.name }} \
