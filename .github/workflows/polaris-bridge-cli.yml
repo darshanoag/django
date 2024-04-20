@@ -28,7 +28,7 @@ jobs:
     #    ${{ runner.temp }}/synopsys-bridge --stage polaris \
     #        polaris.reports.sarif.create='true'
     - name: Polaris PR Scan
-      if: ${{ github.event_name == 'pull_request' }}
+    #  if: ${{ github.event_name == 'pull_request' }}
       run: |
         echo ${{ github.event.base_ref }}
         echo ${{ github.repository_owner }}
