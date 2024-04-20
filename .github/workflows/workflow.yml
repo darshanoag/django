@@ -10,19 +10,9 @@ jobs:
   build:
     runs-on: [ubuntu-latest]
     environment: POLARIS_SERVERURL
-    env:
-      BRIDGE_POLARIS_SERVERURL: ${{ vars.POLARIS_SERVERURL }}
-      # BRIDGE_POLARIS_ACCESSTOKEN: ${{ secrets.POLARIS_ACCESSTOKEN }}
-      BRIDGE_POLARIS_ACCESSTOKEN: 'rvb1uibn0h59d9e6tnba154883488j3qpls4n3dksmvmeoqbphvme53c42lgra1c0a2fh9k0so7ds'
-      BRIDGE_POLARIS_ASSESSMENT_TYPES: 'SAST'
-      BRIDGE_POLARIS_APPLICATION_NAME: havnoor-${{ github.event.repository.name }}
-      BRIDGE_POLARIS_PROJECT_NAME: ${{ github.event.repository.name }}
-      BRIDGE_POLARIS_BRANCH_NAME: ${{ github.event.ref_name }}
-      BRIDGE_GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      PR_NUMBER: ${{ github.event.number }}
     steps:
     - name: Checkout Source
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
     - name: Polaris PR Scan
       uses: synopsys-sig/synopsys-action@v1.9.0
       with:
@@ -30,6 +20,5 @@ jobs:
        polaris_access_token: 'rvb1uibn0h59d9e6tnba154883488j3qpls4n3dksmvmeoqbphvme53c42lgra1c0a2fh9k0so7ds'
        polaris_assessment_types: 'SAST'
        polaris_application_name: havnoor-${{ github.event.repository.name }}
-       polaris_project_name: ${{ github.event.repository.name }}
        polaris_prComment_enabled: true
        github_token: ${{ secrets.GITHUB_TOKEN }}
