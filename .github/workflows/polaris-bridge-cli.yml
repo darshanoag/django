@@ -15,7 +15,7 @@ jobs:
       BRIDGE_POLARIS_SERVERURL: ${{ vars.POLARIS_SERVERURL }}
       # BRIDGE_POLARIS_ACCESSTOKEN: ${{ secrets.POLARIS_ACCESSTOKEN }}
       BRIDGE_POLARIS_ACCESSTOKEN: 'rvb1uibn0h59d9e6tnba154883488j3qpls4n3dksmvmeoqbphvme53c42lgra1c0a2fh9k0so7ds'
-      BRIDGE_POLARIS_ASSESSMENT_TYPES: 'SAST,SCA'
+      BRIDGE_POLARIS_ASSESSMENT_TYPES: 'SAST'
       BRIDGE_POLARIS_APPLICATION_NAME: havnoor-${{ github.event.repository.name }}
       BRIDGE_POLARIS_PROJECT_NAME: ${{ github.event.repository.name }}
       BRIDGE_POLARIS_BRANCH_NAME: ${{ github.event.ref_name }}
@@ -43,6 +43,7 @@ jobs:
             polaris.prcomment.enabled='true' \
             polaris.serverUrl='https://poc.polaris.synopsys.com/' \
             polaris.branch.parent.name='main' \
+            polaris.branch.parent.id='main' \
             github.repository.owner.name=${{ github.repository_owner }} \
             github.repository.name=${{ github.event.repository.name }} \
             github.repository.branch.name=${{ github.ref_name }} \
