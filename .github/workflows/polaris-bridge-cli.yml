@@ -42,8 +42,8 @@ jobs:
         ${{ runner.temp }}/synopsys-bridge --stage polaris \
             polaris.prcomment.enabled='true' \
             polaris.serverUrl='https://poc.polaris.synopsys.com/' \
-            polaris.branch.parent.name='main' \
-            polaris.branch.parent.id='main' \
+            #polaris.branch.parent.name='main' \
+            #polaris.branch.parent.id='main' \
             github.repository.owner.name=${{ github.repository_owner }} \
             github.repository.name=${{ github.event.repository.name }} \
             github.repository.branch.name=${{ github.ref_name }} \
