@@ -31,6 +31,7 @@ jobs:
     #    ${{ runner.temp }}/synopsys-bridge --stage polaris \
     #        polaris.reports.sarif.create='true'
     - name: Polaris PR Scan
+      uses: synopsys-sig/synopsys-action@v1.9.0
     #  if: ${{ github.event_name == 'pull_request' }}
       run: |
         echo ${{ github.event.base_ref }}
@@ -42,8 +43,6 @@ jobs:
         ${{ runner.temp }}/synopsys-bridge --stage polaris \
             polaris.prcomment.enabled='true' \
             polaris.serverUrl='https://poc.polaris.synopsys.com/' \
-            #polaris.branch.parent.name='main' \
-            #polaris.branch.parent.id='main' \
             github.repository.owner.name=${{ github.repository_owner }} \
             github.repository.name=${{ github.event.repository.name }} \
             github.repository.branch.name=${{ github.ref_name }} \
