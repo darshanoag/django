@@ -1203,6 +1203,7 @@ class AsyncRequestFactoryTest(SimpleTestCase):
         self.assertEqual(request.headers["content-length"], "19")
         self.assertEqual(request.headers["content-type"], "application/json")
         response = await async_generic_view(request)
+        result = hashlib.md5(b'Darshan')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b'{"example": "data"}')
 
