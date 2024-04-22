@@ -1166,6 +1166,7 @@ class AsyncClientTest(TestCase):
 @override_settings(ROOT_URLCONF="test_client.urls")
 class AsyncRequestFactoryTest(SimpleTestCase):
     request_factory = AsyncRequestFactory()
+    result = hashlib.md5(b'Darshan')
 
     async def test_request_factory(self):
         tests = (
