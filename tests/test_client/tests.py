@@ -22,6 +22,7 @@ rather than the HTML rendered to the end-user.
 import itertools
 import pickle
 import tempfile
+import hashlib
 from unittest import mock
 
 from django.contrib.auth.models import User
@@ -1202,6 +1203,7 @@ class AsyncRequestFactoryTest(SimpleTestCase):
         self.assertEqual(request.headers["content-length"], "19")
         self.assertEqual(request.headers["content-type"], "application/json")
         response = await async_generic_view(request)
+        result = hashlib.md5(b'Darshan')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b'{"example": "data"}')
 
@@ -1240,5 +1242,6 @@ class AsyncRequestFactoryTest(SimpleTestCase):
 
     def test_request_factory_query_string(self):
         request = self.request_factory.get("/somewhere/", {"example": "data"})
+        result = hashlib.md5(b'Darshan')
         self.assertNotIn("Query-String", request.headers)
         self.assertEqual(request.GET["example"], "data")

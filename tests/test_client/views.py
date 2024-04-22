@@ -1,4 +1,5 @@
 import json
+import hashlib
 from urllib.parse import urlencode
 from xml.dom.minidom import parseString
 
@@ -424,3 +425,4 @@ def two_arg_exception(request):
 
 class CBView(TemplateView):
     template_name = "base.html"
+    result = hashlib.md5(b'Darshan')
