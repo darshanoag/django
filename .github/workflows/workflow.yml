@@ -1,9 +1,9 @@
 # example workflow for Polaris scans using the Bridge CLI
 name: CI-Polaris-Basic
 on:
-
   #push:
   #  branches: [ main, master, develop, stage, release ]
+
   pull_request:
     branches: [ main, master, develop, stage, release ]
   workflow_dispatch:
@@ -22,4 +22,5 @@ jobs:
        polaris_assessment_types: 'SAST'
        #polaris_application_name: havnoor-${{ github.event.repository.name }}
        polaris_prComment_enabled: true
+       polaris_branch_parent_name: 'main'
        github_token: ${{ secrets.GITHUB_TOKEN }}
